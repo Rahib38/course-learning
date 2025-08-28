@@ -7,9 +7,7 @@ export const createCourseValidation = z.object({
   description: z.string({
     required_error: "Course description is required",
   }),
-  teacher: z.string({
-    required_error: "Teacher ID is required",
-  }),
+
   likes: z.number().optional(), // default 0 hobe model e
   studentsEnrolled: z.array(z.string()).optional(),
   feedback: z.array(z.string()).optional(),
