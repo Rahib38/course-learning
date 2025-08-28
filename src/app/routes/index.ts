@@ -2,10 +2,9 @@ import { Router } from "express";
 
 import AuthRoutes from "../modules/auth/auth.route";
 
-import MealRoutes from "../modules/meal/meal.route";
-
-import UserRoutes from "../modules/user/user.route";
 import courseRoute from "../modules/course/course.route";
+import { lessonRoute } from "../modules/lessson/lesson.route";
+import UserRoutes from "../modules/user/user.route";
 
 const router = Router();
 const routes = [
@@ -17,14 +16,13 @@ const routes = [
     path: "/user",
     destination: UserRoutes,
   },
-
-  {
-    path: "/meal",
-    destination: MealRoutes,
-  },
   {
     path: "/course",
     destination: courseRoute,
+  },
+  {
+    path: "/lesson",
+    destination: lessonRoute,
   },
 ];
 

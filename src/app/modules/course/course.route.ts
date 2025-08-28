@@ -9,7 +9,7 @@ const courseRoute = Router();
 
 // Create course
 courseRoute.post(
-  "/",
+  "/create-course",
   auth(USER_ROLE.TEACHER),
   validateRequest(createCourseValidation),
   courseController.createCourse,

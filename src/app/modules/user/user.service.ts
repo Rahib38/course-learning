@@ -1,14 +1,13 @@
 import QueryBuilder from "../../builder/QueryBuilder";
 import AppError from "../../errors/AppError";
-import { Meal } from "../meal/meal.model";
 import { USER_ROLE } from "./user.constant";
 import { IUser } from "./user.interface";
 import { User } from "./user.model";
 import httpStatus from "http-status";
 
 const getAllUsers = async (query: Record<string, unknown>) => {
-  const usersQuery = new QueryBuilder(Meal.find({ isDeleted: false }), query)
-    .search(["name", "email", "phoneNumber"])
+  const usersQuery = new QueryBuilder(User.find({ isDeleted: false }), query)
+    .search(["name", "email"])
     .filter()
     .sort()
     .paginate();
