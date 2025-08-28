@@ -1,10 +1,15 @@
 import { Types } from "mongoose";
 
+export interface IFeedback {
+  studentId: Types.ObjectId;
+  comment: string;
+}
+
 export interface ICourse {
   title: string;
   description: string;
   teacher: Types.ObjectId;
-  likes: number;
   studentsEnrolled: Types.ObjectId[];
-  feedback: string[];
+  likes: Types.ObjectId[];  
+  feedback: IFeedback[];
 }

@@ -32,4 +32,9 @@ courseRoute.patch(
 // Delete course
 courseRoute.delete("/:id", auth(USER_ROLE.TEACHER), courseController.deleteCourse);
 
+courseRoute.post("/enroll/:courseId", auth(USER_ROLE.STUDENT), courseController.enrollCourse);
+
+courseRoute.post("/like/:courseId", auth(USER_ROLE.STUDENT,USER_ROLE.TEACHER), courseController.likeCourse);
+courseRoute.post("/feedback/:courseId", auth(USER_ROLE.STUDENT,USER_ROLE.TEACHER), courseController.giveFeedback);
+
 export default courseRoute;

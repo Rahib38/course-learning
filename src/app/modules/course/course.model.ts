@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import { model, Schema, Types } from "mongoose";
 import { ICourse } from "./course.interface";
 
 const courseSchema = new Schema<ICourse>(
@@ -16,19 +16,17 @@ const courseSchema = new Schema<ICourse>(
       ref: "User",
       required: true,
     },
-    likes: {
-      type: Number,
-      default: 0,
-    },
     studentsEnrolled: [
       {
         type: Schema.Types.ObjectId,
         ref: "User",
       },
     ],
+    likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
     feedback: [
       {
-        type: String,
+        studentId: { type: Types.ObjectId, ref: "User" },
+        comment: String,
       },
     ],
   },

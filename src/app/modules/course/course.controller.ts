@@ -59,10 +59,57 @@ const deleteCourse = catchAsync(async (req, res) => {
   });
 });
 
+const enrollCourse = catchAsync(async (req, res) => {
+  const { courseId } = req.params;
+  const studentId = req.user.id; // from auth middleware
+
+  const course = await courseService.enrollCourse(courseId, studentId);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Enrolled successfully",
+    data: course,
+  });
+});
+
+const likeCourse = catchAsync(async (req, res) => {
+  const { courseId } = req.params;
+  const studentId = req.user.id; // from auth middleware
+
+  const course = await courseService.toggleLikeCourse(courseId, studentId);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "like/unlike successfully",
+    data: course,
+  });
+});
+
+// Add Feedback
+const giveFeedback = catchAsync(async (req, res) => {
+  const { courseId } = req.params;
+  const studentId = req.user.id; // from auth middleware
+  const { comment } = req.body;
+
+  const course = await courseService.addFeedback(courseId, studentId, comment);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "feedback added successfully",
+    data: course,
+  });
+});
+
 export const courseController = {
   createCourse,
   getAllCourse,
   singleGetCourse,
   updateCourse,
   deleteCourse,
+  enrollCourse,
+  likeCourse,
+  giveFeedback,
 };
