@@ -5,6 +5,7 @@ import AuthRoutes from "../modules/auth/auth.route";
 import courseRoute from "../modules/course/course.route";
 import { lessonRoute } from "../modules/lessson/lesson.route";
 import UserRoutes from "../modules/user/user.route";
+import { topicRoutes } from "../modules/topic/topic.route";
 
 const router = Router();
 const routes = [
@@ -23,6 +24,10 @@ const routes = [
   {
     path: "/lesson",
     destination: lessonRoute,
+  },
+  {
+    path: "/topic",
+    destination: topicRoutes,
   },
 ];
 
