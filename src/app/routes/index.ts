@@ -6,6 +6,7 @@ import courseRoute from "../modules/course/course.route";
 import { lessonRoute } from "../modules/lessson/lesson.route";
 import UserRoutes from "../modules/user/user.route";
 import { topicRoutes } from "../modules/topic/topic.route";
+import progressRouter from "../modules/progress/progress.route";
 
 const router = Router();
 const routes = [
@@ -28,6 +29,10 @@ const routes = [
   {
     path: "/topic",
     destination: topicRoutes,
+  },
+  {
+    path: "/progress",
+    destination: progressRouter,
   },
 ];
 

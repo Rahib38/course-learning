@@ -29,7 +29,7 @@ const getAllCourse = async (query: Record<string, unknown>) => {
     .paginate();
 
   const result = await courseQuery.modelQuery.exec();
-  console.log(result)
+  // console.log(result)
   const meta = await courseQuery.getMetaData();
 
   return {
