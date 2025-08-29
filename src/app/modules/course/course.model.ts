@@ -16,19 +16,23 @@ const courseSchema = new Schema<ICourse>(
       ref: "User",
       required: true,
     },
-    studentsEnrolled: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
-    likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    feedback: [
-      {
-        studentId: { type: Types.ObjectId, ref: "User" },
-        comment: String,
-      },
-    ],
+    studentsEnrolled: {
+      type: [{ type: Schema.Types.ObjectId, ref: "User" }],
+      default: [], // ✅ ensure always array
+    },
+    likes: {
+      type: [{ type: Schema.Types.ObjectId, ref: "User" }],
+      default: [], // ✅ ensure always array
+    },
+    feedback: {
+      type: [
+        {
+          studentId: { type: Types.ObjectId, ref: "User" },
+          comment: String,
+        },
+      ],
+      default: [], // ✅ ensure always array
+    },
   },
   { timestamps: true },
 );
@@ -38,7 +42,6 @@ courseSchema.set("toJSON", {
     delete ret.__v;
   },
 });
-
 courseSchema.statics.isJWTIssuedBeforePasswordChanged = function (
   passwordChangedTimestamp: Date,
   jwtIssuedTimestamp: number,
