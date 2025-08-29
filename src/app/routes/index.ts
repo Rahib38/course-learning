@@ -8,6 +8,7 @@ import UserRoutes from "../modules/user/user.route";
 import { topicRoutes } from "../modules/topic/topic.route";
 import progressRouter from "../modules/progress/progress.route";
 import analyticsRouter from "../modules/analytics/analytics.route";
+import { FollowRoutes } from "../modules/feature/feature.route";
 
 const router = Router();
 const routes = [
@@ -38,6 +39,10 @@ const routes = [
   {
     path: "/analytics",
     destination: analyticsRouter,
+  },
+  {
+    path: "/follow",
+    destination: FollowRoutes,
   },
 ];
 
